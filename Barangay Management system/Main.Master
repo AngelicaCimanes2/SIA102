@@ -1,0 +1,605 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Barangay_Management_system.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Barangay Information Management</title>
+    <link rel="stylesheet" href="Font/ABeeZee-Regular.ttf" />
+    <link rel="icon" href="Pictures/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: "ABeeZee", sans-serif;
+    background: #fefefe;
+    overflow-x: hidden;
+}
+
+.side-nav {
+    height: 100%;
+    width: 230px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #FEFEFE;
+    overflow-x: hidden;
+    border-right: 1px solid black; /* Fixed border shorthand */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+    .side-nav h1 {
+        font-size: 15px;
+        margin-left: 10px;
+        padding: 5px;
+    }
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .nav-logo img {
+        width: 100px;
+    }
+
+    .content ul li,
+    .nav-account ul li {
+        display: flex;
+        align-items: center;
+    }
+
+    .content a,
+    .nav-account a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .nav-account ul,
+    .content ul {
+        padding-left: 5px;
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content li,
+    .nav-account li {
+        padding: 5px 0px 5px 0;
+        margin-right: 5px;
+        font-size: 18px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 12px;
+        text-align: left;
+        position: relative;
+    }
+
+.content-btn button {
+    padding: 5px 30% 5px 0;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    text-align: left;
+    position: relative;
+    border-radius: 12px;
+    align-items: center;
+    display: flex;
+    background-color: #f4f4f4;
+    cursor:pointer;
+}
+
+.content-btn {
+    margin: 0px;
+}
+
+.dropdown-btn {
+    padding: 6px 30% 6px 0;
+    font-size: 18px;
+    position: relative;
+    color: black; /* Changed to match the default color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: left;
+    border: none;
+    border-radius: 13px;
+    font-family: "ABeeZee", sans-serif;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    align-items: center;
+    display: flex;
+}
+
+.down-btn {
+    margin-left: 100px;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: flex;
+    background-color: #f4f4f4;
+    padding-left: 8px;
+    position: relative;
+    flex-direction: column;
+}
+
+.content button:focus-within {
+    background-color: #0048ff;
+    color: white;
+}
+
+.content li:focus-within {
+    background-color: #0048ff;
+    color: white;
+}
+
+.nav-account li:focus-within {
+    background-color: coral;
+}
+
+content a:hover,
+.nav-account a:hover, 
+.content a:focus-within,
+.nav-account a:focus-within {
+    color: white;
+}
+
+.nav-account img,
+.content img {
+    width: 20px;
+    margin: 0px 10px;
+}
+
+.header {
+  
+ margin-left: 230px;
+    position: relative;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.header-container {
+ display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    gap: 38%;
+    position: fixed;
+    background-color: #fefefe;
+    border-bottom: 1px solid black;
+}
+
+
+.button {
+    border: 0;
+    cursor: pointer;
+    background: var(--gray-8);
+    color: var(--gray-2);
+    font-weight: 700;
+    padding: var(--size-2) var(--size-4);
+}
+
+    .button:hover,
+    .button:focus {
+        background: var(--cyan-9);
+    }
+
+.form1,
+.form2,
+.form3 {
+    display: grid;
+    gap: 1em;
+}
+/* end modal styling code */
+
+.form3 button {
+    width: 50%;
+    padding: 10px;
+    margin: auto;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: #0a0908;
+    font-size: 20px;
+}
+
+.form3 h1 {
+    font-size: 20px;
+}
+
+.button-yes {
+    background-color: #90be6d;
+}
+
+.button-no {
+    background-color: #f94144;
+}
+.main-content {
+    margin-left: 235px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: var(--white);
+  padding: 50px 200px 0px 0px;
+  box-shadow: var(--shadow);
+}
+
+.navbar-logo {
+  cursor: pointer;
+}
+
+.navbar-list {
+  width: 100%;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.navbar-list li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.navbar-list li a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.Greetings
+{
+   display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.profile-dropdown {
+  position: relative;
+  width: fit-content;
+      display: flex;
+    flex-direction: row;
+}
+
+.profile-dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 50px;
+  color: var(--black);
+  background-color: white;
+  box-shadow: var(--shadow); 
+  cursor: pointer;
+  border: 1px solid var(--secondary);
+  transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in,
+    border 0.3s;
+}
+
+.profile-dropdown-btn:hover {
+  background-color: var(--secondary-light-2);
+  box-shadow: var(--shadow);
+}
+
+.profile-img {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: url(./assets/profile-pic.jpg);
+  background-size: cover;
+}
+
+.profile-img i {
+  position: absolute;
+  right: 0;
+  bottom: 0.3rem;
+  font-size: 0.5rem;
+  color: var(--green);
+}
+
+.profile-dropdown-btn span {
+  margin-right: 0;
+}
+
+.profile-dropdown-list {
+  position: absolute;
+  width: 180px;
+  right: 30px;
+  top: 25px;
+  background-color:white;
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: max-height 0.5s;
+  list-style: none;
+  padding: 0px;
+}
+
+.profile-dropdown-list hr {
+  border: 0.5px solid var(--green);
+}
+
+.profile-dropdown-list.active {
+  max-height: 500px;
+}
+
+.profile-dropdown-list-item {
+  padding: 1rem 0rem 1rem 1rem;
+  transition: background-color 0.2s ease-in, padding-left 0.2s;
+}
+
+.profile-dropdown-list-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.profile-dropdown-list-item a i {
+  margin-right: 0.8rem;
+  font-size: 1.1rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  background-color: var(--secondary);
+  color: var(--white);
+  line-height: 2.3rem;
+  text-align: center;
+  margin-right: 1rem;
+  border-radius: 50%;
+  transition: margin-right 0.3s;
+}
+
+.profile-dropdown-list-item:hover {
+  padding-left: 1.5rem;
+  background-color: var(--secondary-light);
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.modal-logout{
+    position: fixed;
+    top: 0;
+    left: 120px;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    --transform: translateY(-100vh);
+   
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+    --transform: translateY(0);
+}
+
+.modal_container{
+    margin: 200px 100px 200px 450px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90%;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 8px;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+    transform: var(--transform);
+    transition:var(--transition);
+}
+
+.modal__title{
+    font-size: 32px;
+}
+
+
+.modal__img{
+    width: 100px;
+    margin-top: 0;
+}
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+.modal__close{
+    text-decoration: none;
+    color: #fff;
+    background-color: red;
+    padding: 8px 20px;
+    border: 1px solid ;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color .3s;
+}
+.modal__open{
+  text-decoration: none;
+  color: #fff;
+  background-color:blue;
+  padding: 8px 20px;
+  border: 1px solid ;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 300;
+  transition: background-color .3s;
+}
+
+.modal__close:hover{
+    color: #F26250;
+    background-color: #fff;
+}
+.modal__open:hover{
+  color: #5550f2;
+  background-color: #fff;
+}
+
+@media (max-width:800px) {
+    .nav__list{
+        display: none;
+    }
+
+    .nav__menu{
+        display: block;
+    }
+
+    .hero__main{
+        grid-template-columns: 1fr;
+        grid-template-rows:max-content max-content ;
+        text-align: center;
+    }
+
+    .hero__picture{
+        grid-row: 1/2;
+    }
+
+    .hero__img{
+        max-width: 500px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .modal__container{
+        padding: 2em 1.5em;
+    }
+
+    .modal__title{
+        font-size: 2rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+          <div class="side-nav">
+          <div class="nav-logo">
+              <img src="Pictures/logo.png" />
+              <h2>Bagong Silangan</h2>
+          </div>
+          <h1>MENU</h1>
+          <div class="content">
+              <ul>
+                  <li>
+                      <img src="Pictures/speedometer.png" /><a href="Dashboard.aspx">Dashboard</a></li>
+                  <li>
+                      <img src="Pictures/community.png" /><a href="Baranggay Official.aspx">Barangay Official</a></li>
+                  <li>
+                      <img src="Pictures/id-card.png" /><a href="Resident Information.aspx">Resident Information</a></li>
+                  <li>
+                      <img src="Pictures/document.png" /><a href="Requested Document.aspx">Requested Document</a></li>
+                  <li>
+                      <img src="Pictures/revenue.png" /><a href="Revenue.aspx">Revenue</a></li>
+                  <li><img src="Pictures/public-service.png" /><a href="Services.aspx">Services</a></li>
+              </ul>
+            </div>
+      </div>
+
+
+        <div class="header">
+            <div class="header-container">
+                <div class="header-content">
+                </div>
+
+                <nav class="navbar">
+                    <div class="profile-dropdown">
+                        <div class="Greetings">
+                            <h3>Welcome</h3>
+                            <asp:Label ID="Greetinglbl" Text="Label" runat="server" CssClass="greeting"></asp:Label>
+                        </div>
+
+                        <div onclick="toggle()" class="profile-dropdown-btn">
+                           <asp:Label ID="namelbl" Text="Label" runat="server"></asp:Label>
+                        </div>
+
+                        <ul class="profile-dropdown-list">
+                            <li class="profile-dropdown-list-item">
+                                <a href="#" class="logoutbtn">
+                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <asp:Label ID="logoutbtn" runat="server" Text="Logout" CssClass="logoutbtn"></asp:Label>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    
+          <section class="modal-logout " >
+        <div class="modal_container">
+            <img src="Pictures/logo.png" class="modal__img">
+            <h2 class="modal__title">Are you sure you want to logout?</h2>
+            <div class="buttons">
+            <a href="#" class="modal__close">Cancel</a>
+            <a href="Login.aspx" class="modal__open">Okay</a>
+          </div>
+        </div>
+    </section>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+    </form>
+    <script>
+
+        let profileDropdownList = document.querySelector(".profile-dropdown-list");
+        let btn = document.querySelector(".profile-dropdown-btn");
+
+        let classList = profileDropdownList.classList;
+
+        const toggle = () => classList.toggle("active");
+
+        window.addEventListener("click", function (e) {
+            if (!btn.contains(e.target)) classList.remove("active");
+        });
+
+
+        const openModalLogout = document.querySelector('.logoutbtn');
+        const modalLogout = document.querySelector('.modal-logout');
+        const closeModalLogout = document.querySelector('.modal__close');
+
+        openModalLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalLogout.classList.add('modal--show');
+        });
+
+        closeModalLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalLogout.classList.remove('modal--show');
+        });
+    </script>
+</body>
+
+</html>

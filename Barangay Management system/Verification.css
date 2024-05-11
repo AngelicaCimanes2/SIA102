@@ -1,0 +1,120 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Abel", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #f4f4f4;
+}
+
+.nav-bar {
+    height: 100px;
+    background-color: #181A18;
+    color: #fbfaf5;
+    align-items: center;
+    display: flex;
+    padding: 0px 20px;
+}
+
+.brgy-logo img {
+    width: 100px;
+    background-color: #fbfaf5;
+}
+
+.brgy-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 60%;
+    width: 100%;
+}
+
+.date {
+    display: flex;
+    margin-left: 20px;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.wrapper-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper {
+    background-color: #fbfaf5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 570px;
+    border: 2px solid black;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.verification_form {
+    padding-top: 50px;
+    width: 400px;
+    height: 450px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+    .verification_form img {
+        width: 155px;
+        height: 150px;
+        margin-bottom: 20px; /* Adjust spacing between logo and form */
+    }
+
+    .verification_form h2 {
+        margin-bottom: 20px;
+    }
+
+    .verification_form h5 {
+        font-weight: normal;
+        font-size: 15px;
+    }
+
+.form_verify {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+    .form_verify input {
+        width: 50px;
+        height: 50px;
+        margin: 0 5px;
+        padding: 5px;
+        text-align: center;
+        border: 2px solid black;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+.verifybtn {
+    margin-top: 30px;
+    border-radius: 50px;
+    padding: 10px 80px;
+    border: none;
+    color: white;
+    background-color: #0048ff;
+    cursor: pointer;
+    font-size: 16px;
+}

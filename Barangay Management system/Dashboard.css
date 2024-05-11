@@ -1,0 +1,100 @@
+﻿.Boxes {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.flex-box1, .flex-box2, .flex-box3, .flex-box4{
+    width: 165px;
+    height: 165px;
+    background-color: red;
+    font-size: 25px;
+    text-align: center;
+    line-height: 200px;
+    border-radius: 20px;
+    margin: 35px;
+}
+.flex-box1 {
+    background-color: #FF94E1;
+}
+
+.flex-box2 {
+    background-color: #FFF494;
+}
+
+.flex-box3 {
+    background-color: #9498FF;
+}
+
+.flex-box1 a{
+    text-decoration: none;
+    color: black;
+}
+
+.flex-box2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.flex-box3 a {
+    text-decoration: none;
+    color: black;
+}
+
+.flex-box4 a {
+    text-decoration: none;
+    color: black;
+}
+.dashboard-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.mydatagrid {
+    width:120%;
+    border-radius: 12px;
+    min-width: 90%;
+    height: 80%;
+    border: 2px solid black;
+    margin-left: 50px;
+}
+
+.gridheader {
+    background-color: none;
+    border: none 0px transparent;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.rows {
+    background-color: transparent;
+    font-size: 14px;
+    border: none 0px transparent;
+    border-bottom: 1px black solid;
+    text-align: center;
+}
+
+.mydatagrid td {
+    padding: 5px;
+}
+
+.mydatagrid {
+    padding: 5px;
+}
+.pager{
+    display: none;
+}
+.pager a{
+    background-color: white;
+}
+.pager span{
+
+}
